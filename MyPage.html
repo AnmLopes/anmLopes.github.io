@@ -158,42 +158,44 @@
   </section>
 
   <form id="contact-form" class="card" data-aos="fade-up">
-    <h2 class="section-title">Contact Me</h2>
-    <input type="text" name="from_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-    <input type="email" name="from_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-    <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
-    <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send</button>
-  </form>
+  <h2 class="section-title">Contact Me</h2>
+  <input type="text" name="from_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+  <input type="email" name="from_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+  <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+  <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send</button>
+</form>
 
-  <!-- AOS Library -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    // Initialize AOS Library
-    AOS.init();
+<!-- AOS Library -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // Initialize AOS Library
+  AOS.init();
 
-    // Dark Mode Toggle
-    const toggle = document.getElementById('dark-mode-toggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+  // Initialize EmailJS
+  emailjs.init("j8Ryn8x7HQhIHSVYn");
 
-    // Initialize EmailJS
-    emailjs.init("j8Ryn8x7HQhIHSVYn");
+  // Handle Form Submission
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-    // Handle Form Submission
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
+    // Get form values
+    const formData = new FormData(this);
 
-      emailjs.sendForm('service_l92h0px', 'template_rd4je38', this)
-        .then(() => {
-          alert('Message sent successfully!');
-          this.reset(); // Clear form
-        })
-        .catch((error) => {
-          console.error('EmailJS Error:', error);
-          alert('Failed to send message. Please try again.');
-        });
-    });
-  </script>
+    // Add a recipient for the email (replace "Recipient Name" with the intended name)
+    formData.append("to_name", "Recipient Name");
+
+    // Send form data through EmailJS
+    emailjs.sendForm('service_l92h0px', 'template_rd4je38', this)
+      .then(() => {
+        alert('Message sent successfully!');
+        this.reset(); // Clear form
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error.text);
+        alert(`Failed to send message: ${error.text}`);
+      });
+  });
+</script>
+
 </body>
 </html>

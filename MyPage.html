@@ -183,6 +183,8 @@
 
     // Add a recipient for the email (replace "Recipient Name" with the intended name)
     formData.append("to_name", "Recipient Name");
+     // Add a email for the email (replace "Recipient email" with the intended email)
+    formData.append("from_email", "Recipient Email");
 
     // Send form data through EmailJS
     emailjs.sendForm('service_l92h0px', 'template_qg7jpl7', this)

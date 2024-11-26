@@ -117,7 +117,7 @@
     #side-menu {
       position: fixed;
       top: 20%;
-      right: 0;
+      left: 0; /* Mova o menu para o lado esquerdo */
       background: #333;
       color: #fff;
       padding: 10px;
@@ -245,14 +245,7 @@
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Get form values
-      const formData = new FormData(this);
-
-      // Add a recipient for the email
-      formData.append("to_name", "Recipient Name");
-
-      // Send form data through EmailJS
-      emailjs.sendForm('service_l92h0px', 'template_qg7jpl7', this)
+      emailjs.sendForm('service_l92h0px', 'template_rd4je38', this)
         .then(() => {
           alert('Message sent successfully!');
           this.reset(); // Clear form

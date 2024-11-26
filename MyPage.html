@@ -112,6 +112,41 @@
       background-color: #121212;
       color: #fff;
     }
+
+    /* Side Menu Styles */
+    #side-menu {
+      position: fixed;
+      top: 20%;
+      right: 0;
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    #side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #side-menu ul li {
+      margin-bottom: 10px;
+    }
+
+    #side-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+    }
+
+    #side-menu ul li:hover a {
+      background: #555;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
   </style>
 </head>
 <body>
@@ -121,7 +156,17 @@
     <p>Web Developer | Business Analyst</p>
   </header>
 
-  <section>
+  <!-- Side Menu -->
+  <div id="side-menu">
+    <ul>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Work Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </div>
+
+  <section id="education">
     <div class="education card" data-aos="fade-right">
       <h2 class="section-title">Education</h2>
       <ul>
@@ -132,7 +177,9 @@
         </li>
       </ul>
     </div>
+  </section>
 
+  <section id="experience">
     <div class="experience card" data-aos="fade-left">
       <h2 class="section-title">Work Experience</h2>
       <ul>
@@ -143,7 +190,9 @@
         </li>
       </ul>
     </div>
+  </section>
 
+  <section id="skills">
     <div class="skills card" data-aos="zoom-in">
       <h2 class="section-title">Skills</h2>
       <div class="skill-bar">
@@ -157,48 +206,62 @@
     </div>
   </section>
 
-  <form id="contact-form" class="card" data-aos="fade-up">
-  <h2 class="section-title">Contact Me</h2>
-  <input type="text" name="from_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-  <input type="email" name="from_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-  <input type="tel" name="from_phone" placeholder="Your Phone Number" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-  <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
-  <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send</button>
-</form>
+  <section id="contact">
+    <form id="contact-form" class="card" data-aos="fade-up">
+      <h2 class="section-title">Contact Me</h2>
+      <input type="text" name="from_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <input type="email" name="from_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <input type="tel" name="from_phone" placeholder="Your Phone Number" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+      <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send</button>
+    </form>
+  </section>
 
-<!-- AOS Library -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  // Initialize AOS Library
-  AOS.init();
+  <!-- AOS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS Library
+    AOS.init();
 
-  // Initialize EmailJS
-  emailjs.init("j8Ryn8x7HQhIHSVYn");
+    // Dark Mode Toggle
+    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
 
-  // Handle Form Submission
-  document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Get form values
-    const formData = new FormData(this);
-
-    // Add a recipient for the email (replace "Recipient Name" with the intended name)
-    formData.append("to_name", "Recipient Name");
-     // Add a email for the email (replace "Recipient email" with the intended email)
-    formData.append("from_email", "Recipient Email");
-
-    // Send form data through EmailJS
-    emailjs.sendForm('service_l92h0px', 'template_qg7jpl7', this)
-      .then(() => {
-        alert('Message sent successfully!');
-        this.reset(); // Clear form
-      })
-      .catch((error) => {
-        console.error('EmailJS Error:', error.text);
-        alert(`Failed to send message: ${error.text}`);
+    // Smooth Scroll for Side Menu
+    document.querySelectorAll('#side-menu a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       });
-  });
-</script>
+    });
 
+    // Initialize EmailJS
+    emailjs.init("j8Ryn8x7HQhIHSVYn");
+
+    // Handle Form Submission
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Get form values
+      const formData = new FormData(this);
+
+      // Add a recipient for the email
+      formData.append("to_name", "Recipient Name");
+
+      // Send form data through EmailJS
+      emailjs.sendForm('service_l92h0px', 'template_qg7jpl7', this)
+        .then(() => {
+          alert('Message sent successfully!');
+          this.reset(); // Clear form
+        })
+        .catch((error) => {
+          console.error('EmailJS Error:', error.text);
+          alert(`Failed to send message: ${error.text}`);
+        });
+    });
+  </script>
 </body>
 </html>

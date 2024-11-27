@@ -1,0 +1,14 @@
+
+exeple:
+
+
+/project-root
+│
+├── /assets          # (Optional) Store images, styles, scripts, etc.
+├── /stories         # Subfolder for story pages
+│    ├── story1.html
+│    ├── story2.html
+│    ├── story3.html
+│
+├── index.html        # Main homepage
+└── style.css         # Main styles (optional)

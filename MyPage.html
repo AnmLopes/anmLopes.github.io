@@ -1,41 +1,28 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const arrayContainer = document.getElementById("array-container");
-    const startButton = document.getElementById("start-sorting");
-    
-    let array = [50, 40, 30, 20, 10];
+<!-- index.html -->
+<div id="visualization"></div>
+<button id="startBtn">Iniciar</button>
+<input type="range" id="speed" min="1" max="100">
 
-    function drawArray() {
-        arrayContainer.innerHTML = "";
-        array.forEach((value) => {
-            const bar = document.createElement("div");
-            bar.style.height = `${value * 3}px`;
-            bar.classList.add("bar");
-            arrayContainer.appendChild(bar);
-        });
+// app.js
+function animateSwap(elements, i, j) {
+  // Usar transform CSS ou left/top para animação
+  elements[i].style.transform = `translateX(${j * 30}px)`;
+  elements[j].style.transform = `translateX(${i * 30}px)`;
+}
+
+async function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // Atualizar DOM e esperar animação
+        await new Promise(resolve => 
+          setTimeout(() => {
+            swap(arr, j, j+1);
+            animateSwap(elements, j, j+1);
+            resolve();
+          }, document.getElementById('speed').value * 10)
+        );
+      }
     }
-
-    async function bubbleSort() {
-        let bars = document.querySelectorAll(".bar");
-        for (let i = 0; i < array.length - 1; i++) {
-            for (let j = 0; j < array.length - i - 1; j++) {
-                bars[j].style.backgroundColor = "red";
-                bars[j + 1].style.backgroundColor = "red";
-                await new Promise((resolve) => setTimeout(resolve, 300));
-
-                if (array[j] > array[j + 1]) {
-                    [array[j], array[j + 1]] = [array[j + 1], array[j]];
-                    drawArray();
-                    bars = document.querySelectorAll(".bar");
-                }
-                bars[j].style.backgroundColor = "blue";
-                bars[j + 1].style.backgroundColor = "blue";
-            }
-        }
-    }
-
-    startButton.addEventListener("click", async () => {
-        await bubbleSort();
-    });
-
-    drawArray();
-});
+  }
+}

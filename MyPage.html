@@ -1,28 +1,260 @@
-<!-- index.html -->
-<div id="visualization"></div>
-<button id="startBtn">Iniciar</button>
-<input type="range" id="speed" min="1" max="100">
-
-// app.js
-function animateSwap(elements, i, j) {
-  // Usar transform CSS ou left/top para animação
-  elements[i].style.transform = `translateX(${j * 30}px)`;
-  elements[j].style.transform = `translateX(${i * 30}px)`;
-}
-
-async function bubbleSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        // Atualizar DOM e esperar animação
-        await new Promise(resolve => 
-          setTimeout(() => {
-            swap(arr, j, j+1);
-            animateSwap(elements, j, j+1);
-            resolve();
-          }, document.getElementById('speed').value * 10)
-        );
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>André Lopes - Resume</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- AOS Library -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- EmailJS Library -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f4f4f4, #ddd);
+      color: #133;
     }
-  }
-}
+
+    header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      padding: 2em 0;
+      text-align: center;
+    }
+
+    section {
+      margin: 2em auto;
+      max-width: 800px;
+      padding: 1em;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5em;
+      margin-bottom: 1em;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 1.5em;
+      margin-bottom: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 1em;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background-color: #333;
+      color: #fff;
+      padding: 0.5em 1em;
+      margin: 0.5em;
+      border-radius: 5px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .skill:hover {
+      background-color: #2575fc;
+      transform: scale(1.1);
+    }
+
+    .skill-bar {
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress {
+      background-color: #2575fc;
+      height: 10px;
+      border-radius: 10px;
+    }
+
+    #dark-mode-toggle {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #fff;
+    }
+
+    /* Side Menu Styles */
+    #side-menu {
+      position: fixed;
+      top: 20%;
+      left: 0; /* Mova o menu para o lado esquerdo */
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    #side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #side-menu ul li {
+      margin-bottom: 10px;
+    }
+
+    #side-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+    }
+
+    #side-menu ul li:hover a {
+      background: #555;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <button id="dark-mode-toggle">Toggle Dark Mode</button>
+  <header>
+    <h1>André Lopes</h1>
+    <p>Web Developer | Business Analyst</p>
+  </header>
+
+  <!-- Side Menu -->
+  <div id="side-menu">
+    <ul>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Work Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </div>
+
+  <section id="education">
+    <div class="education card" data-aos="fade-right">
+      <h2 class="section-title">Education</h2>
+      <ul>
+        <li>
+          <h3>University Name</h3>
+          <p class="date">Graduated: May 20XX</p>
+          <p>Bachelor of Science in Computer Science</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="experience card" data-aos="fade-left">
+      <h2 class="section-title">Work Experience</h2>
+      <ul>
+        <li>
+          <h3>Company Name</h3>
+          <p class="date">June 20XX - Present</p>
+          <p>Describe your responsibilities and achievements here.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="skills card" data-aos="zoom-in">
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-bar">
+        <div class="progress" style="width: 75%;"></div>
+      </div>
+      <span class="skill">JavaScript</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">React</span>
+      <span class="skill">Node.js</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <form id="contact-form" class="card" data-aos="fade-up">
+      <h2 class="section-title">Contact Me</h2>
+      <input type="text" name="from_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <input type="email" name="from_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <input type="tel" name="from_phone" placeholder="Your Phone Number" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+      <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send</button>
+    </form>
+  </section>
+
+  <!-- AOS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS Library
+    AOS.init();
+
+    // Dark Mode Toggle
+    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Smooth Scroll for Side Menu
+    document.querySelectorAll('#side-menu a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Initialize EmailJS
+    emailjs.init("j8Ryn8x7HQhIHSVYn");
+
+    // Handle Form Submission
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm('service_l92h0px', 'template_rd4je38', this)
+        .then(() => {
+          alert('Message sent successfully!');
+          this.reset(); // Clear form
+        })
+        .catch((error) => {
+          console.error('EmailJS Error:', error.text);
+          alert(`Failed to send message: ${error.text}`);
+        });
+    });
+  </script>
+</body>
+</html>

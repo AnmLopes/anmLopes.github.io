@@ -1,107 +1,41 @@
-<section id="skills">
-  <div class="skills card" data-aos="zoom-in">
-    <h2 class="section-title">Competências Técnicas</h2>
-    <ul>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-code"></i> Programação</button>
-        <div class="panel">
-          <p>Sólida experiência em C, Java, OCaml, JavaScript, e Bash para desenvolvimento de software eficiente e otimizado. Profundo conhecimento em Programação Orientada a Objetos (POO) e paradigmas funcionais.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-cogs"></i> Algoritmos e Estruturas de Dados</button>
-        <div class="panel">
-          <p>Proficiente na implementação de algoritmos de busca, ordenamento, programação dinâmica, e estruturas de dados como listas, árvores, grafos, pilhas e tabelas de dispersão.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-network-wired"></i> Sistemas Operativos e Redes</button>
-        <div class="panel">
-          <p>Familiaridade avançada com gerenciamento de processos, memória virtual, concorrência, e comunicação interprocessos. Experiência prática com sockets, protocolos TCP/IP, roteamento e construção de aplicações distribuídas.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-database"></i> Bases de Dados</button>
-        <div class="panel">
-          <p>Forte conhecimento em modelagem relacional e entidade-relacionamento (ER), além de experiência em SQL para criação de esquemas, consultas complexas, procedimentos armazenados e manipulação de dados. Implementação de normalização e integridade referencial.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-robot"></i> Inteligência Artificial</button>
-        <div class="panel">
-          <p>Experiência com algoritmos de busca (A*, BFS, DFS), lógica proposicional e de predicados, programação em lógica, planejamento automático e aprendizagem de máquinas. Conhecimentos em redes neurais e redes bayesianas para análise preditiva e diagnóstico.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-palette"></i> Computação Gráfica</button>
-        <div class="panel">
-          <p>Conhecimento em modelagem gráfica 3D utilizando WebGL e OpenGL. Desenvolvimento de aplicações gráficas interativas e interfaces de usuário utilizando modelos de sombreamento e rasterização de polígonos.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-tools"></i> Tecnologias de Desenvolvimento</button>
-        <div class="panel">
-          <p>Proficiência em controle de versões com Git, Docker para conteinerização, e uso de plataformas web como Node.js e React para criação de aplicações modernas e escaláveis.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-calculator"></i> Matemática e Lógica Computacional</button>
-        <div class="panel">
-          <p>Aplicação de lógica formal e teoria de conjuntos para resolução de problemas complexos em áreas como computação teórica, modelagem de sistemas e raciocínio probabilístico.</p>
-        </div>
-      </li>
-      <li class="skill">
-        <button class="accordion"><i class="fas fa-cloud"></i> Desenvolvimento de Aplicações Distribuídas</button>
-        <div class="panel">
-          <p>Compreensão de arquiteturas de redes, qualidade de serviço (QoS), difusão de informações, endereçamento IP e protocolos como HTTP, com foco em desempenho e escalabilidade.</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
+document.addEventListener("DOMContentLoaded", function () {
+    const arrayContainer = document.getElementById("array-container");
+    const startButton = document.getElementById("start-sorting");
+    
+    let array = [50, 40, 30, 20, 10];
 
-<style>
-  .accordion {
-    background-color: #00796b;
-    color: white;
-    cursor: pointer;
-    padding: 0.5em 1em;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-    border-radius: 5px;
-  }
+    function drawArray() {
+        arrayContainer.innerHTML = "";
+        array.forEach((value) => {
+            const bar = document.createElement("div");
+            bar.style.height = `${value * 3}px`;
+            bar.classList.add("bar");
+            arrayContainer.appendChild(bar);
+        });
+    }
 
-  .active, .accordion:hover {
-    background-color: #004d40;
-  }
+    async function bubbleSort() {
+        let bars = document.querySelectorAll(".bar");
+        for (let i = 0; i < array.length - 1; i++) {
+            for (let j = 0; j < array.length - i - 1; j++) {
+                bars[j].style.backgroundColor = "red";
+                bars[j + 1].style.backgroundColor = "red";
+                await new Promise((resolve) => setTimeout(resolve, 300));
 
-  .panel {
-    padding: 0 18px;
-    display: none;
-    background-color: white;
-    overflow: hidden;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-</style>
+                if (array[j] > array[j + 1]) {
+                    [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                    drawArray();
+                    bars = document.querySelectorAll(".bar");
+                }
+                bars[j].style.backgroundColor = "blue";
+                bars[j + 1].style.backgroundColor = "blue";
+            }
+        }
+    }
 
-<script>
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
+    startButton.addEventListener("click", async () => {
+        await bubbleSort();
     });
-  }
-</script>
+
+    drawArray();
+});

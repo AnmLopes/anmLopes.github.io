@@ -237,6 +237,69 @@
         targetElement.scrollIntoView({ behavior: 'smooth' });
       });
     });
+document.addEventListener("DOMContentLoaded", function () {
+    const arrayContainer = document.getElementById("array-container");
+    const startButton = document.getElementById("start-sorting");
+    const inputField = document.getElementById("array-input");
+    const generateButton = document.getElementById("generate-array");
+    const delayInput = document.getElementById("delay-input");
+    
+    let array = [];
+    let delay = 300;
+
+    function generateArray() {
+        const inputValues = inputField.value.split(",").map(num => parseInt(num.trim(), 10)).filter(num => !isNaN(num));
+        array = inputValues.length ? inputValues : [50, 40, 30, 20, 10];
+        drawArray();
+    }
+
+    function drawArray() {
+        arrayContainer.innerHTML = "";
+        array.forEach((value) => {
+            const bar = document.createElement("div");
+            bar.style.height = `${value * 3}px`;
+            bar.classList.add("bar");
+            arrayContainer.appendChild(bar);
+        });
+    }
+
+    async function bubbleSort() {
+        const bars = document.querySelectorAll(".bar");
+        for (let i = 0; i < array.length - 1; i++) {
+            for (let j = 0; j < array.length - i - 1; j++) {
+                bars[j].style.backgroundColor = "red";
+                bars[j + 1].style.backgroundColor = "red";
+                await new Promise((resolve) => setTimeout(resolve, delay));
+
+                if (array[j] > array[j + 1]) {
+                    [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                    updateBars(j, j + 1);
+                }
+                bars[j].style.backgroundColor = "blue";
+                bars[j + 1].style.backgroundColor = "blue";
+            }
+        }
+    }
+
+    function updateBars(index1, index2) {
+        const bars = document.querySelectorAll(".bar");
+        [bars[index1].style.height, bars[index2].style.height] = [bars[index2].style.height, bars[index1].style.height];
+    }
+
+    startButton.addEventListener("click", async () => {
+        await bubbleSort();
+    });
+
+    generateButton.addEventListener("click", () => {
+        generateArray();
+    });
+
+    delayInput.addEventListener("input", () => {
+        delay = parseInt(delayInput.value, 10) || 300;
+    });
+
+    generateArray();
+});
 
     // Initialize EmailJS
     emailjs.init("j8Ryn8x7HQhIHSVYn");

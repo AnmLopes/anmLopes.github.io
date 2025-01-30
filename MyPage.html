@@ -1,260 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>André Lopes - Resume</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <!-- AOS Library -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- EmailJS Library -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f4f4f4, #ddd);
-      color: #133;
-    }
-
-    header {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: #fff;
-      padding: 2em 0;
-      text-align: center;
-    }
-
-    section {
-      margin: 2em auto;
-      max-width: 800px;
-      padding: 1em;
-    }
-
-    h1, h2 {
-      color: #333;
-    }
-
-    .section-title {
-      font-size: 1.5em;
-      border-bottom: 2px solid #333;
-      padding-bottom: 0.5em;
-      margin-bottom: 1em;
-    }
-
-    .card {
-      background-color: #fff;
-      padding: 1.5em;
-      margin-bottom: 1.5em;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    ul li {
-      margin-bottom: 1em;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 1em;
-      margin: 0.5em;
-      border-radius: 5px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .skill:hover {
-      background-color: #2575fc;
-      transform: scale(1.1);
-    }
-
-    .skill-bar {
-      background-color: #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-
-    .progress {
-      background-color: #2575fc;
-      height: 10px;
-      border-radius: 10px;
-    }
-
-    #dark-mode-toggle {
-      background-color: #333;
-      color: #fff;
-      border: none;
-      padding: 0.5em 1em;
-      border-radius: 5px;
-      cursor: pointer;
-      position: fixed;
-      top: 10px;
-      right: 10px;
-    }
-
-    .dark-mode {
-      background-color: #121212;
-      color: #fff;
-    }
-
-    /* Side Menu Styles */
-    #side-menu {
-      position: fixed;
-      top: 20%;
-      left: 0; /* Mova o menu para o lado esquerdo */
-      background: #333;
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      z-index: 1000;
-    }
-
-    #side-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    #side-menu ul li {
-      margin-bottom: 10px;
-    }
-
-    #side-menu ul li a {
-      color: #fff;
-      text-decoration: none;
-      display: block;
-      padding: 5px;
-    }
-
-    #side-menu ul li:hover a {
-      background: #555;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-  </style>
-</head>
-<body>
-  <button id="dark-mode-toggle">Toggle Dark Mode</button>
-  <header>
-    <h1>André Lopes</h1>
-    <p>Web Developer | Business Analyst</p>
-  </header>
-
-  <!-- Side Menu -->
-  <div id="side-menu">
+<section id="technical-skills">
+  <div class="technical-skills card" data-aos="fade-up">
+    <h2 class="section-title">Technical Skills</h2>
+    
+    <h3>Computer Science Theory and Formal Modelling</h3>
     <ul>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#experience">Work Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact Me</a></li>
+      <li>Data and system modelling using logic and set theory.</li>
+      <li>Countable and uncountable sets, Cantor's diagonal argument.</li>
+      <li>Deterministic (DFA) and non-deterministic finite automata (NFA).</li>
+      <li>Regular expressions and context-free grammars.</li>
+      <li>Building LL and LR parsers.</li>
+      <li>Computability and complexity concepts: P, NP classes, and undecidable problems.</li>
+      <li>Turing machines, Church-Turing thesis, and computational universality.</li>
+      <li>Difference between function and algorithm, levels of interpretation of abstract machines.</li>
+    </ul>
+
+    <h3>Computational Logic and Discrete Mathematics</h3>
+    <ul>
+      <li>Propositional logic: syntax, semantics, truth tables, Boolean algebra.</li>
+      <li>First-order logic: terms, quantifiers, valuation, and interpretation structure.</li>
+      <li>Natural Deduction: introduction and elimination rules.</li>
+      <li>Resolution and proof algorithms: clausal form, Skolemization, unification.</li>
+      <li>Mathematical induction and structured logical reasoning.</li>
+    </ul>
+
+    <h3>Digital Logic and Computational Systems</h3>
+    <ul>
+      <li>Boolean algebra, truth tables, and logical function simplification using Karnaugh maps.</li>
+      <li>Design and implementation of combinational circuits: encoders, decoders, multiplexers, demultiplexers, and binary arithmetic circuits.</li>
+      <li>Implementation of sequential circuits: registers, counters, and state machines (Moore and Mealy).</li>
+      <li>Digital memories: operation of RAM, ROM, PROM, EPROM, and EEPROM.</li>
+      <li>Introduction to microprocessor architecture and decomposition into control and data parts.</li>
+      <li>Assembly programming and translation between Assembly and C.</li>
+      <li>Processor architecture: single-cycle operation, pipelines, and optimizations in microprocessors.</li>
+      <li>Cache memory structures and introduction to virtual memory.</li>
+      <li>Low-level interface for input/output devices.</li>
+      <li>Compilation, linking, assembly, and loading of programs.</li>
+    </ul>
+
+    <h3>Operating Systems and Concurrent Programming</h3>
+    <ul>
+      <li>Process management: creation, scheduling, and synchronization of processes and threads.</li>
+      <li>Concurrent programming: use of the pthreads API for thread management.</li>
+      <li>Memory management: paging, segmentation, and page replacement algorithms.</li>
+      <li>File systems: structure, operations, and data consistency.</li>
+      <li>Input/Output and Device Drivers: abstraction and operation.</li>
+      <li>Virtualization: concepts of virtual machines and containers (e.g., Docker).</li>
+      <li>Development of programs interacting with system calls in Unix/Linux environments.</li>
+    </ul>
+
+    <h3>Object-Oriented Programming (OOP) and Software Engineering</h3>
+    <ul>
+      <li>Fundamental concepts of Object-Oriented Programming (OOP): classes, interfaces, polymorphism, and inheritance.</li>
+      <li>Design and development of modular and reusable applications.</li>
+      <li>Generic programming and efficient use of collections (lists, arrays, dictionaries, sets).</li>
+      <li>Exception handling and debugging techniques.</li>
+      <li>Software testing and verification, including regression testing and code validation.</li>
+      <li>Use of APIs and class libraries for manipulating collections and building graphical user interfaces.</li>
+    </ul>
+
+    <h3>Algorithms and Data Structures</h3>
+    <ul>
+      <li>Algorithm analysis: asymptotic complexity, best, worst, and average-case analysis.</li>
+      <li>Recursive programming: divide and conquer techniques and memoization.</li>
+      <li>Abstract data types: stacks (LIFO), queues (FIFO), linked lists, dictionaries, priority queues.</li>
+      <li>Advanced data structures: hash tables, binary trees, AVL trees, heaps.</li>
+      <li>Sorting algorithms: insertion sort, selection sort, bubble sort, quicksort, mergesort, heapsort, and bucket sort.</li>
+    </ul>
+
+    <h3>Programming Languages and Paradigms</h3>
+    <ul>
+      <li>Study and comparison of modern programming languages: Caml, C, JavaScript, Java.</li>
+      <li>Understanding of execution environments: interpretation, compilation, virtual machines, and execution models.</li>
+      <li>Functional and procedural languages: usage of OCaml and C, focusing on types, verification and inference, polymorphism, and static typing.</li>
+      <li>Object-based languages: analysis of JavaScript and Java: classes, prototypes, inheritance, and subtyping.</li>
+      <li>Scripting and Domain-Specific Languages: JavaScript and Bash.</li>
+      <li>Programming paradigms: inductive programming in OCaml, pointer manipulation in C, modeling in JavaScript, and introduction to client-side web programming.</li>
+      <li>Introduction to web programming: HTTP protocols, forms, AJAX, and client-server event models.</li>
+      <li>Choosing the right programming language: factors and scenarios to consider.</li>
+    </ul>
+
+    <h3>Databases</h3>
+    <ul>
+      <li>Data models: Entity-Relationship (ER) and Relational models, with some notions of the object-relational model.</li>
+      <li>Relational algebra: formal language for database manipulation.</li>
+      <li>SQL fundamentals: creation and manipulation of databases with SQL, both for data definition and data manipulation.</li>
+      <li>Database normalization: functional and multivalued dependencies, normal forms (3rd, 4th, and Boyce-Codd).</li>
+      <li>Data modeling in XML and manipulation mechanisms.</li>
+      <li>Integrity and transactions: referential integrity, assertions and triggers, security and authorizations.</li>
+      <li>Database interaction: usage of Embedded SQL, ODBC, JDBC.</li>
+      <li>Interface development: creating interfaces for data manipulation.</li>
+      <li>Problem modeling in ER and conversion to relational model.</li>
+    </ul>
+
+    <h3>Computer Graphics and Interfaces</h3>
+    <ul>
+      <li>Graphics pipeline: description of the graphics process, from modeling to visualization.</li>
+      <li>Modeling with polygons and vertex attributes: basic modeling techniques and manipulation of graphics.</li>
+      <li>Lighting and shadows: lighting models and shading techniques for rasterized graphics.</li>
+      <li>Building graphical user interfaces: principles and techniques of user interface design.</li>
+      <li>Graphic programming: creating interactive graphical applications using modern APIs like WebGL.</li>
+      <li>Abstraction and efficiency: translating graphic design principles into efficient implementations.</li>
+      <li>Graphical Interface Development and Solution Evaluation: analyzing efficiency and experimentation in graphical solutions.</li>
+    </ul>
+
+    <h3>Artificial Intelligence</h3>
+    <ul>
+      <li>AI paradigms and areas: introduction to classical and modern approaches.</li>
+      <li>Search algorithms: blind, informed, and local search; heuristics and evaluation functions; algorithms like A*.</li>
+      <li>Knowledge representation: inference in propositional logic, first-order logic, and Bayesian networks.</li>
+      <li>Planning and machine learning: planning techniques and essential algorithms.</li>
+      <li>Problem modeling: specification of heuristics and parameterization of search algorithms.</li>
+      <li>Logic programming: modeling and solving problems with Prolog.</li>
+      <li>Inference in Bayesian networks: performing predictive and diagnostic inference.</li>
+      <li>Machine learning: neural networks and inductive approaches to learning.</li>
+    </ul>
+
+    <h3>Computer Networks</h3>
+    <ul>
+      <li>Fundamentals of computer networks: terminology, organization, services, components, and structuring principles.</li>
+      <li>Reliable data transmission: techniques like Stop & Wait, TCP, and FEC (Forward Error Correction).</li>
+      <li>Quality of Service (QoS): techniques for improving and adapting to network traffic.</li>
+      <li>Information diffusion: protocols like HTTP, scalability, and content distribution networks.</li>
+      <li>Names and addresses: DNS, IP addresses, MAC, and their use in addressing layers.</li>
+      <li>Routing: principles and algorithms, including DHCP, ARP, NAT, and IP routing.</li>
+      <li>TCP/IP networks: architecture and essential protocols like DHCP, ARP, IP, and more.</li>
+      <li>Switched Ethernet networks: operation of channels and statistical multiplexing.</li>
+      <li>Network protocols and distributed applications: protocol development and performance analysis of distributed applications.</li>
     </ul>
   </div>
-
-  <section id="education">
-    <div class="education card" data-aos="fade-right">
-      <h2 class="section-title">Education</h2>
-      <ul>
-        <li>
-          <h3>University Name</h3>
-          <p class="date">Graduated: May 20XX</p>
-          <p>Bachelor of Science in Computer Science</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="experience card" data-aos="fade-left">
-      <h2 class="section-title">Work Experience</h2>
-      <ul>
-        <li>
-          <h3>Company Name</h3>
-          <p class="date">June 20XX - Present</p>
-          <p>Describe your responsibilities and achievements here.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="skills card" data-aos="zoom-in">
-      <h2 class="section-title">Skills</h2>
-      <div class="skill-bar">
-        <div class="progress" style="width: 75%;"></div>
-      </div>
-      <span class="skill">JavaScript</span>
-      <span class="skill">HTML</span>
-      <span class="skill">CSS</span>
-      <span class="skill">React</span>
-      <span class="skill">Node.js</span>
-    </div>
-  </section>
-
-  <section id="contact">
-    <form id="contact-form" class="card" data-aos="fade-up">
-      <h2 class="section-title">Contact Me</h2>
-      <input type="text" name="from_name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-      <input type="email" name="from_email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-      <input type="tel" name="from_phone" placeholder="Your Phone Number" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-      <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
-      <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send</button>
-    </form>
-  </section>
-
-  <!-- AOS Library -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    // Initialize AOS Library
-    AOS.init();
-
-    // Dark Mode Toggle
-    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
-
-    // Smooth Scroll for Side Menu
-    document.querySelectorAll('#side-menu a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    // Initialize EmailJS
-    emailjs.init("j8Ryn8x7HQhIHSVYn");
-
-    // Handle Form Submission
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      emailjs.sendForm('service_l92h0px', 'template_rd4je38', this)
-        .then(() => {
-          alert('Message sent successfully!');
-          this.reset(); // Clear form
-        })
-        .catch((error) => {
-          console.error('EmailJS Error:', error.text);
-          alert(`Failed to send message: ${error.text}`);
-        });
-    });
-  </script>
-</body>
-</html>
+</section>

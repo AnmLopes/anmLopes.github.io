@@ -4,13 +4,149 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>André Lopes - Resume</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- AOS Library -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- EmailJS Library -->
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <style>
-    /* All the styling remains unchanged */
-    /* You can add your previous styles here */
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f4f4f4, #ddd);
+      color: #133;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      padding: 2em 0;
+      text-align: center;
+    }
+
+    section {
+      margin: 2em auto;
+      max-width: 800px;
+      padding: 1em;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5em;
+      margin-bottom: 1em;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 1.5em;
+      margin-bottom: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 1em;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background-color: #333;
+      color: #fff;
+      padding: 0.5em 1em;
+      margin: 0.5em;
+      border-radius: 5px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .skill:hover {
+      background-color: #2575fc;
+      transform: scale(1.1);
+    }
+
+    .skill-bar {
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress {
+      background-color: #2575fc;
+      height: 10px;
+      border-radius: 10px;
+    }
+
+    #dark-mode-toggle {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #fff;
+    }
+
+    /* Side Menu Styles */
+    #side-menu {
+      position: fixed;
+      top: 20%;
+      left: 0;
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    #side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #side-menu ul li {
+      margin-bottom: 10px;
+    }
+
+    #side-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+    }
+
+    #side-menu ul li:hover a {
+      background: #555;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
   </style>
 </head>
 <body>
@@ -23,7 +159,7 @@
   <!-- Side Menu -->
   <div id="side-menu">
     <ul>
-      <li><a href="#education">Education & Technical Skills</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#experience">Work Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact Me</a></li>
@@ -35,7 +171,7 @@
       <h2 class="section-title">Education</h2>
       <ul>
         <li>
-          <h3>University of Technology</h3>
+          <h3>University Name</h3>
           <p class="date">Graduated: May 20XX</p>
           <p>Bachelor of Science in Computer Science</p>
         </li>
@@ -58,45 +194,15 @@
 
   <section id="skills">
     <div class="skills card" data-aos="zoom-in">
-      <h2 class="section-title"> Education & Technical Skills</h2>
-      <ul>
-        <li>
-          <h3>Programming</h3>
-          <p>Sólida experiência em C, Java, OCaml, JavaScript, e Bash para desenvolvimento de software eficiente e otimizado. Profundo conhecimento em Programação Orientada a Objetos (POO) e paradigmas funcionais.</p>
-        </li>
-        <li>
-          <h3>Algorithms & Data Structures</h3>
-          <p>Proficiente na implementação de algoritmos de busca, ordenamento, programação dinâmica, e estruturas de dados como listas, árvores, grafos, pilhas e tabelas de dispersão.</p>
-        </li>
-        <li>
-          <h3>Operating Systems & Networking</h3>
-          <p>Familiaridade avançada com gerenciamento de processos, memória virtual, concorrência, e comunicação interprocessos. Experiência prática com sockets, protocolos TCP/IP, roteamento e construção de aplicações distribuídas.</p>
-        </li>
-        <li>
-          <h3>Databases</h3>
-          <p>Forte conhecimento em modelagem relacional e entidade-relacionamento (ER), além de experiência em SQL para criação de esquemas, consultas complexas, procedimentos armazenados e manipulação de dados. Implementação de normalização e integridade referencial.</p>
-        </li>
-        <li>
-          <h3>Artificial Intelligence</h3>
-          <p>Experiência com algoritmos de busca (A*, BFS, DFS), lógica proposicional e de predicados, programação em lógica, planejamento automático e aprendizagem de máquinas. Conhecimentos em redes neurais e redes bayesianas para análise preditiva e diagnóstico.</p>
-        </li>
-        <li>
-          <h3>Computer Graphics</h3>
-          <p>Conhecimento em modelagem gráfica 3D utilizando WebGL e OpenGL. Desenvolvimento de aplicações gráficas interativas e interfaces de usuário utilizando modelos de sombreamento e rasterização de polígonos.</p>
-        </li>
-        <li>
-          <h3>Development Technologies</h3>
-          <p>Proficiência em controle de versões com Git, Docker para conteinerização, e uso de plataformas web como Node.js e React para criação de aplicações modernas e escaláveis.</p>
-        </li>
-        <li>
-          <h3>Mathematics & Computational Logic</h3>
-          <p>Aplicação de lógica formal e teoria de conjuntos para resolução de problemas complexos em áreas como computação teórica, modelagem de sistemas e raciocínio probabilístico.</p>
-        </li>
-        <li>
-          <h3>Distributed Applications Development</h3>
-          <p>Compreensão de arquiteturas de redes, qualidade de serviço (QoS), difusão de informações, endereçamento IP e protocolos como HTTP, com foco em desempenho e escalabilidade.</p>
-        </li>
-      </ul>
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-bar">
+        <div class="progress" style="width: 75%;"></div>
+      </div>
+      <span class="skill">JavaScript</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">React</span>
+      <span class="skill">Node.js</span>
     </div>
   </section>
 
@@ -111,13 +217,18 @@
     </form>
   </section>
 
+  <!-- AOS Library -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
+    // Initialize AOS Library
     AOS.init();
+
+    // Dark Mode Toggle
     document.getElementById('dark-mode-toggle').addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
     });
 
+    // Smooth Scroll for Side Menu
     document.querySelectorAll('#side-menu a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -127,15 +238,17 @@
       });
     });
 
+    // Initialize EmailJS
     emailjs.init("j8Ryn8x7HQhIHSVYn");
 
+    // Handle Form Submission
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
 
       emailjs.sendForm('service_l92h0px', 'template_rd4je38', this)
         .then(() => {
           alert('Message sent successfully!');
-          this.reset();
+          this.reset(); // Clear form
         })
         .catch((error) => {
           console.error('EmailJS Error:', error.text);

@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio showcasing technical skills in Computer Science, Programming, and Artificial Intelligence.">
+    <meta name="author" content="Your Name">
+    <title>Welcome to My Technical Portfolio</title>
+    
+    <!-- External Stylesheets (e.g., for Bootstrap, AOS, or custom styles) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .card {
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin-top: 20px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .card a {
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to My Technical Portfolio</h1>
+        <p>Explore my skills and projects in Computer Science, Programming, and Artificial Intelligence</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+
+        <!-- Navigation Cards Section -->
+        <div class="card" data-aos="fade-up">
+            <h3>Technical Skills</h3>
+            <p>Explore my expertise in fields like data modelling, automata theory, programming paradigms, and more.</p>
+            <a href="technical-skills.html">Learn More</a>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <h3>Programming Languages</h3>
+            <p>Study and compare modern languages like Caml, C, JavaScript, Java, and more.</p>
+            <a href="programming-languages.html">Explore Languages</a>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="400">
+            <h3>Artificial Intelligence</h3>
+            <p>Learn about AI paradigms, search algorithms, machine learning, and more.</p>
+            <a href="artificial-intelligence.html">Discover AI</a>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="600">
+            <h3>Database Systems</h3>
+            <p>Understand relational databases, SQL, data modeling, and database normalization.</p>
+            <a href="databases.html">Learn About Databases</a>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="800">
+            <h3>Computer Networks</h3>
+            <p>Dive into networking concepts, protocols, and distributed applications.</p>
+            <a href="computer-networks.html">Network Concepts</a>
+        </div>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (for scroll animations)
+        AOS.init();
+    </script>
+
+</body>
+
+</html>
 
